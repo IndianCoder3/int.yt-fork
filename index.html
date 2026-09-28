@@ -11,12 +11,12 @@
 <meta content="https://int.yt/" property="og:url"/>
 <meta content="Intent™ FreeDomain | Free Subdomains" property="og:title"/>
 <meta content="Get a free .int.yt nc.to gw.to rh.to yn.to subdomain in seconds. No hidden fees, instant DNS, and automatic HTTPS." property="og:description"/>
-<meta content="intent-logo.svg" property="og:image"/>
+<meta content="https://int.yt/intent-logo.svg" property="og:image"/>
 <meta content="summary_large_image" property="twitter:card"/>
 <meta content="https://int.yt/" property="twitter:url"/>
 <meta content="Intent™ FreeDomain | Free Subdomains" property="twitter:title"/>
 <meta content="Get a free .int.yt nc.to gw.to rh.to yn.to subdomain in seconds. No hidden fees, instant DNS, and automatic HTTPS." property="twitter:description"/>
-<meta content="intent-logo.svg" property="twitter:image"/>
+<meta content="https://int.yt/intent-logo.svg" property="twitter:image"/>
 <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -27,8 +27,8 @@
       "nonprofitStatus": "Nonprofit501c3"
     }
   </script>
-<link href="intent-logo.svg" rel="icon" type="image/png"/>
-<link href="intent-logo.svg" rel="apple-touch-icon"/>
+<link href="https://int.yt/intent-logo.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://int.yt/intent-logo.svg" rel="apple-touch-icon"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
 <style>
     :root {
@@ -44,9 +44,14 @@
 
     * { box-sizing: border-box; }
      
-     html {
-         scroll-behavior: smooth;
-      }
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
     
     body {
       margin: 0;
@@ -73,15 +78,40 @@
       border-bottom: 1px solid var(--glass-border);
     }
 
-    .brand { display: flex; align-items: center; text-decoration: none; }
-    .logo-wrap {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: var(--accent-blue); display: flex;
-      align-items: center; justify-content: center;
-      margin-right: 12px; overflow: hidden;
+    .brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      min-width: 0;
     }
-    .logo-wrap img { width: 100%; height: 100%; object-fit: cover; }
-    .brand .title { font-weight: 800; font-size: 1.1rem; color: #fff; letter-spacing: -0.5px; }
+
+    /* Transparent logo container - fixes square clipping and blue background */
+    .logo-wrap {
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      flex-shrink: 0; /* Prevents squishing and left-side glitching on mobile/tablet */
+      overflow: visible;
+    }
+
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Prevents SVG edges from being clipped or stripped */
+      display: block;
+    }
+
+    .brand .title {
+      font-weight: 800;
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      color: #fff;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
 
     nav { display: flex; gap: 18px; align-items: center; }
     nav a {
@@ -100,6 +130,7 @@
       max-width: 1200px;
       margin: 40px auto;
       padding: 0 20px;
+      width: 100%;
     }
 
     .glass-panel {
@@ -113,16 +144,23 @@
     }
 
     .hero { display: grid; grid-template-columns: 1.6fr 1fr; gap: 25px; margin-bottom: 50px; }
-    h1 { font-size: 2.8rem; line-height: 1.1; margin-top: 0; color: #fff; font-weight: 800; }
+    h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); line-height: 1.15; margin-top: 0; color: #fff; font-weight: 800; }
     .lead { font-size: 1.05rem; color: var(--muted-cream); margin-bottom: 30px; line-height: 1.5; }
 
     .search-box {
       display: flex; background: rgba(0, 0, 0, 0.2); padding: 6px;
       border-radius: 14px; border: 1px solid var(--glass-border); margin-bottom: 25px;
+      flex-wrap: wrap; gap: 6px;
     }
     .search-box input {
-      flex: 1; background: transparent; border: none; padding: 12px 18px;
-      color: white; outline: none; font-size: 16px;
+      flex: 1 1 200px; background: transparent; border: none; padding: 12px 18px;
+      color: white; outline: none; font-size: 16px; min-width: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
     .btn {
@@ -136,8 +174,10 @@
     .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
     .features-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 25px; margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: 25px;
+      margin-top: 50px;
     }
 
     .feature-card {
@@ -158,7 +198,7 @@
     .card-btn:hover { background: var(--accent-blue); border-color: var(--accent-blue); }
     .discord-btn { background: #5865F2; border-color: #5865F2; }
 
-    .section-title { font-weight: 800; font-size: 2rem; color: #fff; margin: 60px 0 30px 0; text-align: center; }
+    .section-title { font-weight: 800; font-size: clamp(1.5rem, 4vw, 2rem); color: #fff; margin: 60px 0 30px 0; text-align: center; }
     .sponsor-section { text-align: center; margin-bottom: 60px; }
     .sponsor-grid { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px; margin-top: 25px; }
     .sp-img { height: 35px; width: auto; opacity: 0.7; filter: brightness(0) invert(1); }
@@ -175,13 +215,20 @@
       .hero { grid-template-columns: 1fr; }
       nav { display: none; }
     }
+
+    @media (max-width: 600px) {
+      .glass-panel { padding: 22px 18px; }
+      .search-box button { width: 100%; }
+      .hero-actions .btn { width: 100%; }
+      footer { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
 <header>
 <a class="brand" href="/">
 <div class="logo-wrap">
-<img alt="Intent™ Logo" src="intent-logo.svg"/>
+<img alt="Intent™ Logo" src="https://int.yt/intent-logo.svg"/>
 </div>
 <div class="title">Intent™ — A Non-Profit | Free Subdomains</div>
 </a>
@@ -206,7 +253,7 @@
 <input name="domain" placeholder="Search your-name.int.yt..." required="" type="text"/>
 <button class="btn btn-primary" type="submit">Search Domain</button>
 </form>
-<div style="display: flex; gap: 15px;">
+<div class="hero-actions">
 <a class="btn btn-cream" href="https://panel.int.yt/signup.php">Create Account</a>
 <a class="btn btn-outline" href="https://panel.int.yt/login.php">Dashboard</a>
 </div>
@@ -304,7 +351,7 @@
 <p style="font-size: 13px; color: var(--muted-cream)">Privacy-first DNS solutions for the modern web.</p>
 <p style="font-size: 13px; color: var(--muted-cream)">© Intent™ 2025–2026. All Rights Reserved.</p>
 </div>
-<div style="display: flex; gap: 50px;">
+<div style="display: flex; gap: 50px; flex-wrap: wrap;">
 <div style="display: flex; flex-direction: column; gap: 10px;">
 <span style="font-weight: 800; font-size: 11px; color: var(--accent-blue); letter-spacing: 1px;">LEGAL</span>
 <a href="/privacy.html" style="color: inherit; text-decoration: none; font-size: 13px;">Privacy</a>
