@@ -30,15 +30,15 @@ If you are working on a high-quality project or you would like a **1, 2, or 3-le
 2. **Create an Account:** Sign up at the [Intent Dashboard](https://dash.int.yt/signup.php).
 3. **Register:** Claim your domain through the user dashboard.
 4. **Connect DNS:** Point your domain NS(nameserver records) to your hosting provider.
-   * **Supported:** FreeDNS, Namecheap.
-   * **Coming Soon:** Cloudflare support.
+   * **Recommended:** [Intent DNS](https://dns.int.yt)
+   * **Other Supported Ones:** NameCheap DNS, FreeDNS, Hostry.
 
 ---
 
 ## 🔗 Quick Links
 
 * **Official Website:** [int.yt](https://int.yt)
-* **Management Dashboard:** [dash.int.yt](https://dash.int.yt)
+* **Management Panel:** [panel.int.yt](https://panel.int.yt)
 * **Whois Lookup:** [dash.int.yt/public-whois.php](https://dash.int.yt/public-whois.php)
 * **Support & Community:** [Join our Discord](https://discord.gg/mFpW2sp66C)
 
